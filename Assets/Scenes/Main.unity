@@ -261,8 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b076253471a3ec14fa9c51aaf7dc73ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fourWayRoom: {fileID: 100000, guid: 559e65abc43c7b444a9e2e310c3fd29d, type: 3}
-  cornerRoom: {fileID: 100000, guid: 0a5249e90b969f84b90eb86ec7c66c82, type: 3}
-  straightRoom: {fileID: 100000, guid: caa24b2c91f7b1e4ab747b866aff48db, type: 3}
-  tRoom: {fileID: 100000, guid: 1170cb2c040a5cb43bc30645ca0a0874, type: 3}
-  deadEndRoom: {fileID: 100000, guid: 9f261e675dffc7a4685c2d1c9281d0d9, type: 3}
+  fourWayRoom: {fileID: 1207815219793746, guid: a2c2de4e921040148a42d92063bcbf8f,
+    type: 2}
+  cornerRoom: {fileID: 1081104993839728, guid: 2d495b611e91aef4e950f06204a249b6, type: 2}
+  straightRoom: {fileID: 1456580880574874, guid: 2f2a7650e7ab38f4788bcf2cf8899049,
+    type: 2}
+  tRoom: {fileID: 1654553703285682, guid: 385396aa51f2ff94faf250aed0c1603b, type: 2}
+  deadEndRoom: {fileID: 1150070091297488, guid: f88ca24a2df7cf1469903ee71330031c,
+    type: 2}
