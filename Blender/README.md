@@ -27,7 +27,7 @@ Some things to keep in mind:
 
 Additional stuff:
 
- - Unity's FBX documentation: https://docs.unity3d.com/560/Documentation/Manual/FBXImporter-Model.html
+ - Unity's model import documentation: https://docs.unity3d.com/Manual/HOWTO-exportFBX.html
 
  > "Unity's default unit scale is 1 unit = 1 meter, so the scale of
  > your imported mesh is maintained, and applied to physics
