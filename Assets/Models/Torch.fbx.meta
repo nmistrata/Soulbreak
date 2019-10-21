@@ -12,12 +12,16 @@ ModelImporter:
     400004: Torch
     400006: WallAnchor
     2100000: No Name
+    2100002: Wood
+    2100004: Rough Metal
     2300000: Ring
     2300002: Torch
     2300004: WallAnchor
+    2300006: //RootNode
     3300000: Ring
     3300002: Torch
     3300004: WallAnchor
+    3300006: //RootNode
     4300000: Ring
     4300002: WallAnchor
     4300004: Torch
