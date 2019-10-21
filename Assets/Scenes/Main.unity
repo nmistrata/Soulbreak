@@ -288,18 +288,3 @@ MonoBehaviour:
   tRoom: {fileID: 1654553703285682, guid: 385396aa51f2ff94faf250aed0c1603b, type: 2}
   deadEndRoom: {fileID: 1150070091297488, guid: f88ca24a2df7cf1469903ee71330031c,
     type: 2}
---- !u!114 &665068100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 665068097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33a23c70f39c4d419be7a45ef438d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wall: {fileID: 1537890834974816, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
-  door: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-  floor: {fileID: 1736646588482246, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
-  ceiling: {fileID: 1375396184939568, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
