@@ -252,7 +252,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665068098}
-  - component: {fileID: 665068099}
   - component: {fileID: 665068100}
   m_Layer: 0
   m_Name: Dungeon
@@ -274,25 +273,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &665068099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 665068097}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b076253471a3ec14fa9c51aaf7dc73ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fourWayRoom: {fileID: 1207815219793746, guid: a2c2de4e921040148a42d92063bcbf8f,
-    type: 2}
-  cornerRoom: {fileID: 1081104993839728, guid: 2d495b611e91aef4e950f06204a249b6, type: 2}
-  straightRoom: {fileID: 1456580880574874, guid: 2f2a7650e7ab38f4788bcf2cf8899049,
-    type: 2}
-  tRoom: {fileID: 1654553703285682, guid: 385396aa51f2ff94faf250aed0c1603b, type: 2}
-  deadEndRoom: {fileID: 1150070091297488, guid: f88ca24a2df7cf1469903ee71330031c,
-    type: 2}
 --- !u!114 &665068100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 1537890834974816, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
-  door: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
+  doorway: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
   floor: {fileID: 1736646588482246, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1375396184939568, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
 --- !u!1001 &1522843197
