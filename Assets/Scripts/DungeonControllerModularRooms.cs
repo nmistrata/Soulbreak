@@ -11,10 +11,10 @@ public class DungeonControllerModularRooms : MonoBehaviour
 
     public DungeonLayout layout;
     public GameObject wall;
-    public GameObject door;
+    public GameObject doorway;
     public GameObject floor;
     public GameObject ceiling;
-    public const int ROOM_SIZE = 23;
+    public const int ROOM_SIZE = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +29,10 @@ public class DungeonControllerModularRooms : MonoBehaviour
 
     void createRoom(RoomIdentifier r)
     {
-        //Debug.Log(r.connections & 0b1111);
-        GameObject northWall = (r.connections & NORTH) > 0 ? door : wall;
-        GameObject eastWall = (r.connections & EAST) > 0 ? door : wall;
-        GameObject southWall = (r.connections & SOUTH) > 0 ? door : wall;
-        GameObject westWall = (r.connections & WEST) > 0 ? door : wall;
+        GameObject northWall = (r.connections & NORTH) > 0 ? doorway : wall;
+        GameObject eastWall = (r.connections & EAST) > 0 ? doorway : wall;
+        GameObject southWall = (r.connections & SOUTH) > 0 ? doorway : wall;
+        GameObject westWall = (r.connections & WEST) > 0 ? doorway : wall;
         GameObject floor = this.floor;
         GameObject ceiling = this.ceiling;
         Vector3 roomOrigin = ROOM_SIZE * new Vector3(r.x, 0, r.y);

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65407560562510134}
   - component: {fileID: 65107864675216336}
   m_Layer: 0
-  m_Name: stonyDoor
+  m_Name: stonyDoorway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,10 +59,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 38bd6f8c30adef14ba3c0fe5bcc8174c, type: 3}
-  - {fileID: 2100002, guid: 38bd6f8c30adef14ba3c0fe5bcc8174c, type: 3}
-  - {fileID: 2100004, guid: 38bd6f8c30adef14ba3c0fe5bcc8174c, type: 3}
-  - {fileID: 2100006, guid: 38bd6f8c30adef14ba3c0fe5bcc8174c, type: 3}
+  - {fileID: 2100000, guid: 7ca3b2c0613b2d34287e0b83e9c42cd8, type: 3}
+  - {fileID: 2100004, guid: 7ca3b2c0613b2d34287e0b83e9c42cd8, type: 3}
+  - {fileID: 2100008, guid: 7ca3b2c0613b2d34287e0b83e9c42cd8, type: 3}
+  - {fileID: 2100006, guid: 7ca3b2c0613b2d34287e0b83e9c42cd8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,7 +88,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246269441137704}
-  m_Mesh: {fileID: 4300000, guid: 38bd6f8c30adef14ba3c0fe5bcc8174c, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 7ca3b2c0613b2d34287e0b83e9c42cd8, type: 3}
 --- !u!65 &65107864675216336
 BoxCollider:
   m_ObjectHideFlags: 1
