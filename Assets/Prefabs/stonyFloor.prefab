@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4294028643816540}
   - component: {fileID: 33960794772291268}
   - component: {fileID: 23706575234948052}
-  - component: {fileID: 65975658530581232}
+  - component: {fileID: 65425423455555738}
   m_Layer: 0
   m_Name: stonyFloor
   m_TagString: Untagged
@@ -88,7 +88,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736646588482246}
   m_Mesh: {fileID: 4300002, guid: 3932654b83fd0814badcf806f46a2663, type: 3}
---- !u!65 &65975658530581232
+--- !u!65 &65425423455555738
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,5 +98,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 23, y: 0.5, z: 22.999998}
-  m_Center: {x: 0, y: -0.25, z: 0}
+  m_Size: {x: 30.000002, y: 0.6939442, z: 29.999998}
+  m_Center: {x: 0, y: -0.30520225, z: 8.1303304e-17}

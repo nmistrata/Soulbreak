@@ -20,7 +20,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
     void Start()
     {
         layout = new DungeonLayout(10, 4);
-        RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
+        RoomIdentifier[] identifiers = layout.GetRoomTypes();
 
         foreach (RoomIdentifier i in identifiers) {
             createRoom(i);
