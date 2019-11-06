@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33a23c70f39c4d419be7a45ef438d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 1537890834974816, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
-  doorway: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-  floor: {fileID: 1736646588482246, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
-  ceiling: {fileID: 1375396184939568, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
+  wall: {fileID: 1283294530925834, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
+  doorway: {fileID: 1513191317066392, guid: 4274aff612c41a346b762a3923922c4b, type: 2}
+  floor: {fileID: 1613547218068682, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+  ceiling: {fileID: 1883394799698402, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
 --- !u!1001 &1522843197
 Prefab:
   m_ObjectHideFlags: 0
