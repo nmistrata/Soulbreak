@@ -10,12 +10,16 @@ ModelImporter:
     400002: StonyDoorLeft
     400004: StonyDoorRight
     2100000: StoneDark2
+    2100002: Stone
     2300000: StonyDoorLeft
     2300002: StonyDoorRight
+    2300004: //RootNode
     3300000: StonyDoorLeft
     3300002: StonyDoorRight
+    3300004: //RootNode
     4300000: StonyDoorLeft
     4300002: StonyDoorRight
+    4300004: StonyDoor
   externalObjects: {}
   materials:
     importMaterials: 1

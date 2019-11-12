@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-struct Room
+struct LayoutRoom
 {
     public int connections;
     public RoomType type;
     public int size;
 
-    public Room(RoomType type)
+    public LayoutRoom(RoomType type)
     {
         connections = 0;
         this.type = type;
@@ -54,7 +54,7 @@ public class DungeonLayout
     private const int EAST =  2;
     private const int NORTH =   1;
 
-    private Room[,] rooms;
+    private LayoutRoom[,] rooms;
 
     public DungeonLayout(int pathLength, int sidePathLength)
     {
@@ -62,12 +62,12 @@ public class DungeonLayout
         this.maxSidePathLength = sidePathLength;
         this.numRooms = 0;
         maxSize = (int)1.4*pathLength;
-        rooms = new Room[maxSize, maxSize];
+        rooms = new LayoutRoom[maxSize, maxSize];
         for (int i = 0; i < maxSize; i++)
         {
             for (int j = 0; j < maxSize; j++)
             {
-                rooms[i, j] = new Room(RoomType.NULL);
+                rooms[i, j] = new LayoutRoom(RoomType.NULL);
             }
         }
         startOffset = maxSize / 2;
@@ -177,7 +177,7 @@ public class DungeonLayout
                 for (int j = 0; j < 3; j++) {
                     returnString += "x";
                     for (int k = 0; k < maxSize; k++) {
-                        Room r = rooms[k, i];
+                        LayoutRoom r = rooms[k, i];
                         if (j == 0) {
                             returnString += "  ";
                             if ((r.connections & NORTH) > 0) {

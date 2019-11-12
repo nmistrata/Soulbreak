@@ -5,33 +5,23 @@ using UnityEngine;
 public class Door : MonoBehaviour {
 
     private int openShapeKey = 0;
-    private SkinnedMeshRenderer mesh;
-    public float openTime = 2f;
+    public float openTime = 1f;
     private float closedZ = 0f;
     private float openZ = 2.2f;
 
     private Transform leftDoor;
     private Transform rightDoor;
 
-    // Use this for initialization
+    private bool cleared;
+    public bool locked;
+    private bool playerPresent;
+
     void Start () {
         openShapeKey = 0;
-        mesh = GetComponent<SkinnedMeshRenderer>();
         leftDoor = transform.GetChild(0);
         rightDoor = transform.GetChild(1);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-/*
-        if (Input.GetKeyDown(KeyCode.Q) && !IsInvoking())
-        {
-            InvokeRepeating("Open", 0f, openTime / 100f);
-        }
-        else if (Input.GetKeyDown(KeyCode.W) && !IsInvoking())
-        {
-            InvokeRepeating("Close", 0f, openTime / 100f);
-        }*/
+        cleared = false;
+        locked = false;
     }
 
     void Open()
@@ -64,11 +54,57 @@ public class Door : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("triggered");
-        if (other.gameObject.tag.Equals("Player") && !IsInvoking("Open"))
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            playerPresent = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            playerPresent = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (!playerPresent && (!cleared || locked))
+        {
+            CloseDoor();
+        }
+
+        if (playerPresent && (!isClosed() || !locked))
+        {
+            OpenDoor();
+        }
+    }
+
+    public bool isCleared() { return cleared;  }
+    public void clearDoor() {
+        cleared = true;
+    }
+
+    public bool isClosed()
+    {
+        return openShapeKey == 0;
+    }
+
+    public void CloseDoor()
+    {
+        if (!IsInvoking("Close") && !playerPresent)
+        {
+            CancelInvoke("Open");
+            InvokeRepeating("Close", 0f, openTime / 100f);
+        }
+    }
+
+    public void OpenDoor()
+    {
+        if (!IsInvoking("Open"))
         {
             CancelInvoke("Close");
             InvokeRepeating("Open", 0f, openTime / 100f);
-        } 
+        }
     }
 }
