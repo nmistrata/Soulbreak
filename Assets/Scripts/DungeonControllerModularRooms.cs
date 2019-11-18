@@ -31,8 +31,6 @@ public class DungeonControllerModularRooms : MonoBehaviour
         foreach (RoomIdentifier i in identifiers) {
             CreateRoom(i);
         }
-
-        GlobalVars.dungeon = gameObject;
     }
 
     void CreateRoom(RoomIdentifier r)
