@@ -16,18 +16,26 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject ceiling;
     public const int ROOM_SIZE = 30;
 
+    public GameObject[] enemies;
+    public int numEnemiesPerRoom = 2;
+
+    public int mainPathLength = 6;
+    public int sidePathMaxLength = 3;
+
     // Start is called before the first frame update
     void Start()
     {
-        layout = new DungeonLayout(10, 4);
+        layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
         RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
 
         foreach (RoomIdentifier i in identifiers) {
-            createRoom(i);
+            CreateRoom(i);
         }
+
+        GlobalVars.dungeon = gameObject;
     }
 
-    void createRoom(RoomIdentifier r)
+    void CreateRoom(RoomIdentifier r)
     {
         GameObject northWall = (r.connections & NORTH) > 0 ? doorway : wall;
         GameObject eastWall = (r.connections & EAST) > 0 ? doorway : wall;
@@ -48,7 +56,25 @@ public class DungeonControllerModularRooms : MonoBehaviour
         Instantiate(southWall, roomOrigin, Quaternion.Euler(0, 90, 0), newRoomObj.transform);
         Instantiate(westWall, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
 
-        newRoomObj.AddComponent<Room>();
+        switch (r.type)
+        {
+            case (RoomType.START):
+                newRoomObj.AddComponent<SpawnRoom>();
+                break;
+            case (RoomType.END):
+                newRoomObj.AddComponent<BossRoom>();
+                break;
+            case (RoomType.ALTAR):
+                newRoomObj.AddComponent<AltarRoom>();
+                break;
+            case (RoomType.ENEMY):
+                CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
+                combatRoom.generateEnemies(enemies, numEnemiesPerRoom);
+                break;
+            default:
+                break;
+        }
+
         BoxCollider boxCollider = newRoomObj.AddComponent<BoxCollider>();
         boxCollider.size = new Vector3(ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
         boxCollider.isTrigger = true;

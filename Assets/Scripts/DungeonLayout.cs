@@ -17,7 +17,6 @@ struct LayoutRoom
 public enum RoomType
 {
     START,
-    SHOP,
     END,
     ALTAR,
     ENEMY,

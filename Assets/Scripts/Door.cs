@@ -74,25 +74,25 @@ public class Door : MonoBehaviour {
             CloseDoor();
         }
 
-        if (playerPresent && (!isClosed() || !locked))
+        if (playerPresent && (!IsClosed() || !locked))
         {
             OpenDoor();
         }
     }
 
-    public bool isCleared() { return cleared;  }
-    public void clearDoor() {
+    public bool IsCleared() { return cleared;  }
+    public void ClearDoor() {
         cleared = true;
     }
 
-    public bool isClosed()
+    public bool IsClosed()
     {
         return openShapeKey == 0;
     }
 
-    public void CloseDoor()
+    private void CloseDoor()
     {
-        if (!IsInvoking("Close") && !playerPresent)
+        if (!IsInvoking("Close"))
         {
             CancelInvoke("Open");
             InvokeRepeating("Close", 0f, openTime / 100f);

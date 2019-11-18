@@ -2,89 +2,83 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour {
+public abstract class Room : MonoBehaviour {
 
     private Door[] doors;
     private bool cleared;
 
 	// Use this for initialization
-	void Start () {
+	private void Start () {
         doors = GetComponentsInChildren<Door>();
         cleared = false;
+        SetupRoom();
     }
 
+    protected abstract void SetupRoom();
 
-    private void OnTriggerStay(Collider other)
+    protected abstract void OnTriggerStay(Collider other);
+
+    protected void TryToStartRoom()
     {
-        if (!other.gameObject.tag.Equals("Player")) {return;}
-
         if (!cleared)
         {
             LockDoors();
             if (AreDoorsClosed())
             {
-                startRoom();
-            }
-
-            if (OVRInput.GetDown(OVRInput.Button.One)) //DEBUGGING PURPOSES
-            {
-                clearRoom();
+                StartRoom();
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.tag.Equals("Player")) { return; }
-        UnlockDoors();
+        if (other.gameObject.tag.Equals("Player")) {
+            UnlockDoors();
+        }
     }
 
-    public void startRoom()
-    {
-    }
+    protected abstract void StartRoom();
 
-    public void clearRoom()
+    protected void ClearRoom()
     {
         cleared = true;
         UnlockDoors();
         ClearDoors();
-        OpenDoors();
     }
 
-    public void OpenDoors()
+    protected void OpenDoors()
     {
         foreach (Door d in doors)
         {
             d.OpenDoor();
         }
     }
-    public void LockDoors()
+    private void LockDoors()
     {
         foreach (Door d in doors)
         {
             d.locked = true;
         }
     }
-    public void UnlockDoors()
+    private void UnlockDoors()
     {
         foreach (Door d in doors)
         {
             d.locked = false;
         }
     }
-    public void ClearDoors()
+    private void ClearDoors()
     {
         foreach (Door d in doors)
         {
-            d.clearDoor();
+            d.ClearDoor();
         }
     }
-
     private bool AreDoorsClosed()
     {
         foreach (Door d in doors)
         {
-            if (!d.isClosed()) { return false; }
+            if (!d.IsClosed()) { return false; }
         }
         return true;
     }

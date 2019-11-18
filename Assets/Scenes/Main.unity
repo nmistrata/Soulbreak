@@ -204,48 +204,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &423515237
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261753423954850, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &475434569
 Prefab:
   m_ObjectHideFlags: 0
@@ -336,3 +294,9 @@ MonoBehaviour:
   doorway: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
   floor: {fileID: 1736646588482246, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1375396184939568, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
+  enemies:
+  - {fileID: 1807866054630920, guid: 00aa13d29d0cc114d86f83211181f118, type: 2}
+  - {fileID: 1408390868257944, guid: a4ac4ef0ca72cdb4d8369f9d875a592d, type: 2}
+  numEnemiesPerRoom: 5
+  mainPathLength: 6
+  sidePathMaxLength: 3
