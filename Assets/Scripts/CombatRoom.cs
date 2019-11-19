@@ -6,23 +6,24 @@ public class CombatRoom : Room
 {
     private GameObject[] enemies = null;
     private bool active = false;
-    private const float SPAWN_DELAY = .5f;
+    private bool allenemiesSpawned = false;
+    private const float SPAWN_DELAY = .7f;
 
     protected override void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !active)
         {
             TryToStartRoom();
         }
 
-        if (active)
+        if (allenemiesSpawned)
         {
             bool enemiesRemaining = false;
             for (int i = 0; i < enemies.Length; i++)
             {
                 if (enemies[i].activeSelf) { enemiesRemaining = true; break; };
             }
-            if (!enemiesRemaining) { ClearRoom(); }
+            if (!enemiesRemaining) { ClearRoom(); OpenDoors(); }
         }
     }
 
@@ -33,6 +34,7 @@ public class CombatRoom : Room
 
     protected override void StartRoom()
     {
+        active = true;
         for (int i = 0; i < enemies.Length; i++)
         {
             StartCoroutine(SpawnEnemy(i, i*SPAWN_DELAY));
@@ -44,7 +46,10 @@ public class CombatRoom : Room
     {
         yield return new WaitForSeconds(delayTime);
         enemies[index].SetActive(true);
-        active = true;
+        if (index == enemies.Length - 1)
+        {
+            allenemiesSpawned = true;
+        }
     }
 
     public void generateEnemies(GameObject[] enemyTypes, int numEnemies)
