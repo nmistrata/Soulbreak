@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour {
 
-    public Transform player;
+    private Transform player;
 
     public float velocity = 2f;
 
@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	void Start () {
         health = maxHealth;
+        player = GameObject.Find("OVRPlayerController").transform;
 	}
 	
 	void Update () {
@@ -24,13 +25,11 @@ public class EnemyBehavior : MonoBehaviour {
             gameObject.SetActive(false);
         }
 
-
-        if (Mathf.Abs(Vector3.Distance(transform.position, player.position)) > 0.5) {
+        if (Mathf.Abs(Vector3.Distance(transform.position, player.position)) > 1.0f) {
             transform.LookAt(player);
             transform.position += transform.forward * Time.deltaTime * velocity;
         } else {
             // Too close to player, stop moving and hit them
-            Debug.Log("Hitting the player!");
             velocity = 0;
         }
 	}
