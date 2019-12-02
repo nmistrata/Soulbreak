@@ -39,7 +39,7 @@ public abstract class Room : MonoBehaviour {
 
     protected abstract void StartRoom();
 
-    protected void ClearRoom()
+    protected virtual void ClearRoom()
     {
         cleared = true;
         UnlockDoors();

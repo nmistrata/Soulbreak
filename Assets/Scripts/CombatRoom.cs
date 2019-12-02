@@ -52,7 +52,7 @@ public class CombatRoom : Room
         }
     }
 
-    public void generateEnemies(GameObject[] enemyTypes, int numEnemies)
+    public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies)
     {
 
         enemies = new GameObject[numEnemies];

@@ -14,9 +14,11 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject doorway;
     public GameObject floor;
     public GameObject ceiling;
+    public GameObject bossTeleporter;
     public const int ROOM_SIZE = 30;
 
     public GameObject[] enemies;
+    public GameObject[] bosses;
     public int numEnemiesPerRoom = 2;
 
     public int mainPathLength = 6;
@@ -60,7 +62,12 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 newRoomObj.AddComponent<SpawnRoom>();
                 break;
             case (RoomType.END):
-                newRoomObj.AddComponent<BossRoom>();
+                GameObject teleporter = Instantiate(bossTeleporter, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
+                teleporter.GetComponent<Teleporter>().SetDestination(new Vector3(0, 0, 0)/*NEED TO ADD DESTINATION!!*/);
+                BossRoom bossRoom = newRoomObj.AddComponent<BossRoom>();
+                GameObject boss = bosses[Random.Range(0, bosses.Length)];
+                bossRoom.generateBoss(boss);
+                bossRoom.teleporter = teleporter;
                 break;
             case (RoomType.ALTAR):
                 newRoomObj.AddComponent<AltarRoom>();
