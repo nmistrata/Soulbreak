@@ -291,12 +291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 1283294530925834, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
-  doorway: {fileID: 1246269441137704, guid: f6d5d24d031f2d34bb0fe07c633cc547, type: 2}
+  doorway: {fileID: 1246269441137704, guid: 4274aff612c41a346b762a3923922c4b, type: 2}
   floor: {fileID: 1613547218068682, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1883394799698402, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
   enemies:
-  - {fileID: 1807866054630920, guid: e327cca780ecb714a8c3db2f93859e29, type: 2}
-  - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
+  - {fileID: 1499343186839642, guid: 19ace521d7d39ed4b95a5b6f8d6a0c9a, type: 2}
   numEnemiesPerRoom: 5
   mainPathLength: 6
   sidePathMaxLength: 3
