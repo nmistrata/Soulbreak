@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54003690797899602}
   - component: {fileID: 114437642260067710}
   m_Layer: 0
-  m_Name: enemy2
+  m_Name: tempEnemySphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1408390868257944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f8f5c84787f5f4b80932d11ef36658, type: 3}
+  m_Script: {fileID: 11500000, guid: 29bfa032914b2234c828b47b9e0c9f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135489667286579580

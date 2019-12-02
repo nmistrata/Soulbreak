@@ -295,8 +295,8 @@ MonoBehaviour:
   floor: {fileID: 1736646588482246, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1375396184939568, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
   enemies:
-  - {fileID: 1807866054630920, guid: 00aa13d29d0cc114d86f83211181f118, type: 2}
-  - {fileID: 1408390868257944, guid: a4ac4ef0ca72cdb4d8369f9d875a592d, type: 2}
+  - {fileID: 1807866054630920, guid: e327cca780ecb714a8c3db2f93859e29, type: 2}
+  - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
   numEnemiesPerRoom: 5
   mainPathLength: 6
   sidePathMaxLength: 3
