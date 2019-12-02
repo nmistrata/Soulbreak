@@ -16,18 +16,24 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject ceiling;
     public const int ROOM_SIZE = 30;
 
+    public GameObject[] enemies;
+    public int numEnemiesPerRoom = 2;
+
+    public int mainPathLength = 6;
+    public int sidePathMaxLength = 3;
+
     // Start is called before the first frame update
     void Start()
     {
-        layout = new DungeonLayout(10, 4);
-        RoomIdentifier[] identifiers = layout.GetRoomTypes();
+        layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
+        RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
 
         foreach (RoomIdentifier i in identifiers) {
-            createRoom(i);
+            CreateRoom(i);
         }
     }
 
-    void createRoom(RoomIdentifier r)
+    void CreateRoom(RoomIdentifier r)
     {
         GameObject northWall = (r.connections & NORTH) > 0 ? doorway : wall;
         GameObject eastWall = (r.connections & EAST) > 0 ? doorway : wall;
@@ -37,16 +43,39 @@ public class DungeonControllerModularRooms : MonoBehaviour
         GameObject ceiling = this.ceiling;
         Vector3 roomOrigin = ROOM_SIZE * new Vector3(r.x, 0, r.y);
 
-        GameObject newRoom = new GameObject("room" + r.x + r.y);
-        newRoom.transform.position = roomOrigin;
-        newRoom.transform.parent = this.transform;
+        GameObject newRoomObj = new GameObject("room" + r.x + r.y);
+        newRoomObj.transform.position = roomOrigin;
+        newRoomObj.transform.parent = this.transform;
 
-        Instantiate(floor, roomOrigin, Quaternion.Euler(0, 0, 0), newRoom.transform);
-        Instantiate(ceiling, roomOrigin, Quaternion.Euler(0, 0, 0), newRoom.transform);
-        Instantiate(northWall, roomOrigin, Quaternion.Euler(0, 270, 0), newRoom.transform);
-        Instantiate(eastWall, roomOrigin, Quaternion.Euler(0, 180, 0), newRoom.transform);
-        Instantiate(southWall, roomOrigin, Quaternion.Euler(0, 90, 0), newRoom.transform);
-        Instantiate(westWall, roomOrigin, Quaternion.Euler(0, 0, 0), newRoom.transform);
+        Instantiate(floor, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
+        Instantiate(ceiling, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
+        Instantiate(northWall, roomOrigin, Quaternion.Euler(0, 270, 0), newRoomObj.transform);
+        Instantiate(eastWall, roomOrigin, Quaternion.Euler(0, 180, 0), newRoomObj.transform);
+        Instantiate(southWall, roomOrigin, Quaternion.Euler(0, 90, 0), newRoomObj.transform);
+        Instantiate(westWall, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
+
+        switch (r.type)
+        {
+            case (RoomType.START):
+                newRoomObj.AddComponent<SpawnRoom>();
+                break;
+            case (RoomType.END):
+                newRoomObj.AddComponent<BossRoom>();
+                break;
+            case (RoomType.ALTAR):
+                newRoomObj.AddComponent<AltarRoom>();
+                break;
+            case (RoomType.ENEMY):
+                CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
+                combatRoom.generateEnemies(enemies, numEnemiesPerRoom);
+                break;
+            default:
+                break;
+        }
+
+        BoxCollider boxCollider = newRoomObj.AddComponent<BoxCollider>();
+        boxCollider.size = new Vector3(ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
+        boxCollider.isTrigger = true;
     }
     // Update is called once per frame
     void Update()

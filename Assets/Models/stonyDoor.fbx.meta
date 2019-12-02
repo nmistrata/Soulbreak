@@ -4,15 +4,21 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: StonyDoorLeft
+    100004: StonyDoorRight
     400000: //RootNode
-    2100000: Stone
-    2100002: StoneDark2
-    2100004: StoneDark1
-    2100006: StoneLight1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Stony Door Wall
-    4300002: Door
+    400002: StonyDoorLeft
+    400004: StonyDoorRight
+    2100000: StoneDark2
+    2100002: Stone
+    2300000: StonyDoorLeft
+    2300002: StonyDoorRight
+    2300004: //RootNode
+    3300000: StonyDoorLeft
+    3300002: StonyDoorRight
+    3300004: //RootNode
+    4300000: StonyDoorLeft
+    4300002: StonyDoorRight
     4300004: StonyDoor
   externalObjects: {}
   materials:
