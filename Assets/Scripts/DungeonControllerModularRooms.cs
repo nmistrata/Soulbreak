@@ -49,6 +49,9 @@ public class DungeonControllerModularRooms : MonoBehaviour
         {
             CreateRoom(i, newLevelObj.transform);
         }
+        numEnemiesPerRoom += enemiesIncreasePerLevel;
+        mainPathLength += pathLengthIncreasePerLevel;
+        sidePathMaxLength = mainPathLength / 3;
         StartCoroutine(GenerateNewLevelAsync());
         return newLevelObj;
     }
