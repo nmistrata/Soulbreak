@@ -161,6 +161,7 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Awake()
 	{
+
 		Controller = gameObject.GetComponent<CharacterController>();
 
 		if (Controller == null)

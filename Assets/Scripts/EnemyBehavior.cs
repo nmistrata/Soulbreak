@@ -7,6 +7,8 @@ public class EnemyBehavior : MonoBehaviour {
 
     private Transform player;
 
+    private new Rigidbody rigidbody;
+
     public float velocity = 2f;
 
     public float maxHealth = 1f;
@@ -14,10 +16,22 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float damage = 1f;
 
-	void Start () {
+    public float stoppingDistance = 1.5f;
+    public float startingDistance = 3f;
+
+    private int state;
+    private const int IDLE = 0;
+    private const int WALKING = 1;
+    private const int ATTACKING = 2;
+
+    private Animator animator;
+
+    void Start () {
         health = maxHealth;
-        player = GameObject.Find("OVRPlayerController").transform;
-	}
+        player = GameManager.player.transform;
+        animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
 	
 	void Update () {
         if (health <= 0.0f) {
@@ -25,12 +39,26 @@ public class EnemyBehavior : MonoBehaviour {
             gameObject.SetActive(false);
         }
 
-        if (Mathf.Abs(Vector3.Distance(transform.position, player.position)) > 1.0f) {
-            transform.LookAt(player);
+        float distance = Vector3.Distance(new Vector3(player.position.x, 0, player.position.z), transform.position);
+        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
+
+        if (state == WALKING && distance > stoppingDistance || state != WALKING && distance > startingDistance) {
             transform.position += transform.forward * Time.deltaTime * velocity;
+            state = WALKING;
         } else {
             // Too close to player, stop moving and hit them
-            velocity = 0;
+            state = ATTACKING;
         }
-	}
+
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        rigidbody.velocity = Vector3.zero;
+
+        animator.SetInteger("State", state);
+
+        //TEMPORARY FOR TESTING
+        if (OVRInput.GetDown(OVRInput.Button.One))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
