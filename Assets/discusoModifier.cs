@@ -15,16 +15,16 @@ public class discusoModifier : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(frameCounter % 100 == 0)
+		if(frameCounter % 15 == 0)
         {
             float v = pb.velocity.magnitude;
-            float rx = (float)r.NextDouble()*5;
-            float ry = (float)r.NextDouble()*5;
-            float rz = (float)r.NextDouble()*5;
+            float rx = (float)r.NextDouble()*1.15f;
+            float ry = (float)r.NextDouble()*1.15f;
+            float rz = (float)r.NextDouble()*1.15f;
             pb.velocity = new Vector3(rx, ry, rz) * v;
             pb.angularVelocity = new Vector3(rx, ry, rz) *10;
         }
-        if(frameCounter > 300)
+        if(frameCounter > 150)
         {
             frameCounter = 0;
         }

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136445844555376610}
   - component: {fileID: 54798704284284480}
   - component: {fileID: 114688217433453402}
+  - component: {fileID: 114935323531469104}
   m_Layer: 0
   m_Name: energy_discus
   m_TagString: Untagged
@@ -110,6 +111,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc3dc1be31507da4089cd5a4b46a3df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114935323531469104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779142733676174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665a0dd666042064b969b3ac0b813e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136445844555376610

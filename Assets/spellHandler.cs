@@ -21,7 +21,7 @@ public class spellHandler : MonoBehaviour {
         }
         if (!shotRecentlysoDontShootAgain)
         {
-            if (OVRInput.Get(OVRInput.Button.Three))
+            if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.0f && Charactor.equippedWand == 0)
             {
                 GameObject tempProj;
 
@@ -38,7 +38,7 @@ public class spellHandler : MonoBehaviour {
         }
         if (!shotRecentlysoDontShootAgain)
         {
-            if (OVRInput.Get(OVRInput.Button.One))
+            if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.0f && Charactor.equippedWand == 1)
             {
                 GameObject tempProj;
                 GameObject tempProj1;
@@ -79,7 +79,7 @@ public class spellHandler : MonoBehaviour {
         }
         if (!shotRecentlysoDontShootAgain)
         {
-            if (OVRInput.Get(OVRInput.Button.Two))
+            if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.0f && Charactor.equippedWand == 2)
             {
                 GameObject tempProj;
 
@@ -96,7 +96,7 @@ public class spellHandler : MonoBehaviour {
         }
         if (!shotRecentlysoDontShootAgain)
         {
-            if (OVRInput.Get(OVRInput.Button.Four))
+            if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.0f && Charactor.equippedWand == 3)
             {
                 GameObject tempProj;
 

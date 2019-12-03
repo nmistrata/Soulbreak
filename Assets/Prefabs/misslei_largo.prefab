@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136743706943192338}
   - component: {fileID: 54479082329047982}
   - component: {fileID: 114501434410809644}
+  - component: {fileID: 114530523473501108}
   m_Layer: 0
   m_Name: misslei_largo
   m_TagString: Untagged
@@ -113,6 +114,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proj: {fileID: 1378374847742658, guid: d4a07c3a8ccbbfd4c8135058d5b0d0f4, type: 2}
+--- !u!114 &114530523473501108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614729643225092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665a0dd666042064b969b3ac0b813e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136743706943192338
 CapsuleCollider:
   m_ObjectHideFlags: 1
