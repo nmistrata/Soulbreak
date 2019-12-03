@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
   bosses:
   - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
-  numEnemiesPerRoom: 5
+  numEnemiesPerRoom: 2
+  enemiesIncreasePerLevel: 1
   mainPathLength: 2
-  sidePathMaxLength: 0
+  pathLengthIncreasePerLevel: 1

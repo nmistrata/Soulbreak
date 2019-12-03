@@ -42,6 +42,7 @@ public class Teleporter : MonoBehaviour {
     {
         if (!destinationSet) return;
         o.transform.position = destination;
+        GetComponentInParent<DungeonControllerModularRooms>().AdvanceLevel();
     }
 
     public void SetDestination(Vector3 destination)
