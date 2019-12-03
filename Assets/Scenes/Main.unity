@@ -294,8 +294,14 @@ MonoBehaviour:
   doorway: {fileID: 1246269441137704, guid: 4274aff612c41a346b762a3923922c4b, type: 2}
   floor: {fileID: 1613547218068682, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1883394799698402, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
+  bossTeleporter: {fileID: 1608423426267644, guid: 7db0494561a655442af302bf1fa5e457,
+    type: 2}
   enemies:
-  - {fileID: 1499343186839642, guid: 19ace521d7d39ed4b95a5b6f8d6a0c9a, type: 2}
-  numEnemiesPerRoom: 5
-  mainPathLength: 6
-  sidePathMaxLength: 3
+  - {fileID: 1807866054630920, guid: e327cca780ecb714a8c3db2f93859e29, type: 2}
+  - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
+  bosses:
+  - {fileID: 1408390868257944, guid: 719cba56f4e285e488bf444341b0b7d2, type: 2}
+  numEnemiesPerRoom: 2
+  enemiesIncreasePerLevel: 1
+  mainPathLength: 2
+  pathLengthIncreasePerLevel: 1

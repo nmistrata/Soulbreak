@@ -14,26 +14,76 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject doorway;
     public GameObject floor;
     public GameObject ceiling;
+    public GameObject bossTeleporter;
     public const int ROOM_SIZE = 30;
 
     public GameObject[] enemies;
-    public int numEnemiesPerRoom = 2;
+    public GameObject[] bosses;
 
-    public int mainPathLength = 6;
-    public int sidePathMaxLength = 3;
+    public int numEnemiesPerRoom = 2;
+    public int enemiesIncreasePerLevel = 1;
+
+    public int mainPathLength = 2;
+    public int pathLengthIncreasePerLevel = 1;
+    private int sidePathMaxLength = 0;
+
+    private int curLevel;
+    private GameObject curLevelObj;
+    private GameObject nextLevelObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
-        RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
-
-        foreach (RoomIdentifier i in identifiers) {
-            CreateRoom(i);
-        }
+        curLevel = 1;
+        curLevelObj = GenerateFirstLevel();
     }
 
-    void CreateRoom(RoomIdentifier r)
+    private GameObject GenerateFirstLevel()
+    {
+        DungeonLayout layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
+        RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
+        GameObject newLevelObj = new GameObject("level_" + curLevel);
+        newLevelObj.transform.position = Vector3.zero;
+        newLevelObj.transform.parent = transform;
+        foreach (RoomIdentifier i in identifiers)
+        {
+            CreateRoom(i, newLevelObj.transform);
+        }
+        StartCoroutine(GenerateNewLevelAsync());
+        return newLevelObj;
+    }
+
+    IEnumerator GenerateNewLevelAsync()
+    {
+        DungeonLayout layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
+        RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
+        GameObject newLevelObj = new GameObject("level_" + (curLevel+1));
+        newLevelObj.transform.position = Vector3.zero;
+        newLevelObj.transform.parent = transform;
+        newLevelObj.SetActive(false);
+        yield return null;
+
+        foreach (RoomIdentifier i in identifiers)
+        {
+            CreateRoom(i, newLevelObj.transform);
+            yield return null;
+        }
+        nextLevelObj = newLevelObj;
+    }
+
+    public void AdvanceLevel()
+    {
+        curLevel++;
+        numEnemiesPerRoom += enemiesIncreasePerLevel;
+        mainPathLength += pathLengthIncreasePerLevel;
+        sidePathMaxLength = mainPathLength / 3;
+        Destroy(curLevelObj);
+        curLevelObj = nextLevelObj;
+        curLevelObj.SetActive(true);
+        StartCoroutine(GenerateNewLevelAsync());
+    }
+
+    void CreateRoom(RoomIdentifier r, Transform level)
     {
         GameObject northWall = (r.connections & NORTH) > 0 ? doorway : wall;
         GameObject eastWall = (r.connections & EAST) > 0 ? doorway : wall;
@@ -45,7 +95,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
 
         GameObject newRoomObj = new GameObject("room" + r.x + r.y);
         newRoomObj.transform.position = roomOrigin;
-        newRoomObj.transform.parent = this.transform;
+        newRoomObj.transform.parent = level;
 
         Instantiate(floor, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
         Instantiate(ceiling, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
@@ -60,11 +110,16 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 newRoomObj.AddComponent<SpawnRoom>();
                 break;
             case (RoomType.END):
-                newRoomObj.AddComponent<BossRoom>();
+                GameObject teleporter = Instantiate(bossTeleporter, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
+                teleporter.GetComponent<Teleporter>().SetDestination(new Vector3(0, 0, 0)/*NEED TO ADD DESTINATION!!*/); 
+                BossRoom bossRoom = newRoomObj.AddComponent<BossRoom>();
+                GameObject boss = bosses[Random.Range(0, bosses.Length)];
+                bossRoom.generateBoss(boss);
+                bossRoom.teleporter = teleporter;
                 break;
             case (RoomType.ALTAR):
-                newRoomObj.AddComponent<AltarRoom>();
-                break;
+                /*newRoomObj.AddComponent<AltarRoom>();
+                break;*/
             case (RoomType.ENEMY):
                 CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
                 combatRoom.generateEnemies(enemies, numEnemiesPerRoom);
@@ -76,10 +131,5 @@ public class DungeonControllerModularRooms : MonoBehaviour
         BoxCollider boxCollider = newRoomObj.AddComponent<BoxCollider>();
         boxCollider.size = new Vector3(ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
         boxCollider.isTrigger = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
