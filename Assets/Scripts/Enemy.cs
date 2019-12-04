@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBehavior : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     private Transform player;
 
-    private new Rigidbody rigidbody;
 
     public float velocity = 2f;
 
-    public float maxHealth = 1f;
+    public float maxHealth = 100f;
     private float health;
 
     public float damage = 1f;
@@ -24,6 +23,7 @@ public class EnemyBehavior : MonoBehaviour {
     private const int WALKING = 1;
     private const int ATTACKING = 2;
 
+    private new Rigidbody rigidbody;
     private Animator animator;
 
     void Start () {
@@ -34,10 +34,6 @@ public class EnemyBehavior : MonoBehaviour {
     }
 	
 	void Update () {
-        if (health <= 0.0f) {
-            // TODO: Play a sound effect, etc.
-            gameObject.SetActive(false);
-        }
 
         float distance = Vector3.Distance(new Vector3(player.position.x, 0, player.position.z), transform.position);
         transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
@@ -58,6 +54,16 @@ public class EnemyBehavior : MonoBehaviour {
         //TEMPORARY FOR TESTING
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            //TODO gameover
             gameObject.SetActive(false);
         }
     }
