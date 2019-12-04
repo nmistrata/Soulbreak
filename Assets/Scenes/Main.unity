@@ -192,7 +192,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 304337483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e159e534f294394c8297149a03f1226, type: 3}
+  m_Script: {fileID: 11500000, guid: 14c20460a22adf34dacc5a98903af81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &304337488 stripped
@@ -302,15 +302,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 1283294530925834, guid: b4054480671bd1f4e994ffaa7b952feb, type: 2}
-  doorway: {fileID: 1320019598630736, guid: ebff5e76e5b10ae4792e22a698969204, type: 2}
+  doorway: {fileID: 1320019598630736, guid: 4274aff612c41a346b762a3923922c4b, type: 2}
   floor: {fileID: 1613547218068682, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
   ceiling: {fileID: 1883394799698402, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
-  bossTeleporter: {fileID: 1608423426267644, guid: 7db0494561a655442af302bf1fa5e457,
+  bossTeleporter: {fileID: 1608423426267644, guid: bcf8376cbc86fed43bd9631c04c5ed19,
     type: 2}
   enemies:
-  - {fileID: 1878981710080622, guid: 1c945e4deeb70fc4984d11a26c30a7f6, type: 2}
+  - {fileID: 1499343186839642, guid: 19ace521d7d39ed4b95a5b6f8d6a0c9a, type: 2}
   bosses:
-  - {fileID: 1878981710080622, guid: 1c945e4deeb70fc4984d11a26c30a7f6, type: 2}
+  - {fileID: 1807866054630920, guid: 1b66a379eeaacd94fb8642d9f2b64eb7, type: 2}
   numEnemiesPerRoom: 2
   enemiesIncreasePerLevel: 1
   mainPathLength: 2
