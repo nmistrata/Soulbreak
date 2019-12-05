@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Wand : MonoBehaviour
+public class Wand : MonoBehaviour
 {
 
     public GameObject projectile;
-    protected float projectileSpeed;
+    public float projectileSpeed;
     public float shotDelay; //seconds
+    public float WAND_HEIGHT = 0;
 
     private int id;
 
     public void SpawnProjectile()
     {
-        GameObject proj = Instantiate(projectile, transform.position, transform.rotation, transform);
-        proj.GetComponent<Rigidbody>().velocity = projectileSpeed * transform.forward;
+        GameObject proj = Instantiate(projectile, transform.position + transform.up*WAND_HEIGHT, transform.rotation);
+        proj.transform.SetParent(null);
+        proj.GetComponent<Rigidbody>().velocity = projectileSpeed * transform.up;
     }
 
     public int GetId()
@@ -25,6 +27,16 @@ public abstract class Wand : MonoBehaviour
     public bool Equals(Wand other)
     {
         return other.GetId() == id;
+    }
+
+    public void Activate()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(true);
     }
 
 }

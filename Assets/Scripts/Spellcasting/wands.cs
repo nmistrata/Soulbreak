@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class wands{
+public class Wands{
     public string name;
-    //public string description;
+    public string description;
     public double dmg;
     public int id;
+
+    
     public Wands(int id, string name, string description, double dmg)
     {
         this.name = name;

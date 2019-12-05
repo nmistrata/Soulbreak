@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
     private int curWand;
     private float timeSinceLastShot;
 
-    private float shotDelay;
+    private Transform wandContainer;
 
     private void Awake()
     {
@@ -23,36 +23,43 @@ public class Player : MonoBehaviour {
         health = MAX_HEALTH;
         timeSinceLastShot = 0f;
         wands = new List<Wand>();
-        //TODO add starting wand
+
+        GameObject startingWand = GetComponentInChildren<Wand>().gameObject;
+        wandContainer = startingWand.transform.parent;
+        AddWand(startingWand);
         curWand = 0;
-        shotDelay = wands[curWand].GetComponent<Wand>().shotDelay;
     }
 
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && timeSinceLastShot > shotDelay)
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && timeSinceLastShot > wands[curWand].shotDelay)
         {
             timeSinceLastShot = 0;
             FireProjectile();
         }
     }
 
-    public void AddWand(Wand wand)
+    public void AddWand(GameObject wand)
     {
-        wands.Add(wand);
+        wands.Add(wand.GetComponent<Wand>());
     }
 
     public void CycleWandsForward()
     {
-        curWand = (curWand + 1) % wands.Count;
-        shotDelay = wands[curWand].GetComponent<Wand>().shotDelay;
+        SwapWands((curWand + 1) % wands.Count);
     }
 
     public void CycleWandsBackwards()
     {
-        curWand = (curWand + wands.Count - 1) % wands.Count;
-        shotDelay = wands[curWand].GetComponent<Wand>().shotDelay;
+        SwapWands((curWand + wands.Count - 1) % wands.Count);
+    }
+
+    private void SwapWands(int wandIndex)
+    {
+        wands[curWand].Deactivate();
+        curWand = wandIndex;
+        wands[curWand].Activate();
     }
 
     public void TakeDamage(int damage)
@@ -66,6 +73,6 @@ public class Player : MonoBehaviour {
 
     public void FireProjectile()
     {
-        wands[curWand].GetComponent<Wand>().SpawnProjectile();
+        wands[curWand].SpawnProjectile();
     }
 }

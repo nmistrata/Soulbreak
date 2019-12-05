@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 65272088273746114}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,8 +678,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.1057377, y: 12.287653, z: 3.0033839}
-  m_Center: {x: -0.006681349, y: 6.566837, z: -0.31193528}
+  m_Size: {x: 5.6087775, y: 12.830828, z: 3.6937308}
+  m_Center: {x: 0.012025833, y: 6.838423, z: -0.10895938}
 --- !u!95 &95355341053406352
 Animator:
   serializedVersion: 3
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 2
-  maxHealth: 1
+  maxHealth: 100
   damage: 1
   stoppingDistance: 1.5
   startingDistance: 2.2
