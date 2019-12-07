@@ -10,7 +10,7 @@ public abstract class Projectile : MonoBehaviour {
     protected virtual void OnTriggerEnter(Collider collider)
     {
         GameObject other = collider.gameObject;
-        if (other.tag == "Projectile" || other.tag == "Invisible" || other.tag == "Player" && isFriendly)
+        if (other.tag == "Projectile" || other.tag == "Invisible" || other.tag == "Player" && isFriendly || other.tag == "Enemy" && !isFriendly)
         {
             return;
         }

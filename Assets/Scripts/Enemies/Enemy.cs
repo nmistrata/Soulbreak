@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour {
+public abstract class Enemy : MonoBehaviour {
 
-    private Transform player;
+    protected Transform player;
 
 
-    public float velocity = 2f;
+    public float speed = 2f;
 
     public float maxHealth = 100f;
-    private float health;
-
-    public float damage = 1f;
+    protected float health;
 
     public float stoppingDistance = 1.5f;
     public float startingDistance = 3f;
@@ -26,23 +24,25 @@ public class Enemy : MonoBehaviour {
     private new Rigidbody rigidbody;
     private Animator animator;
 
-    void Start () {
+    protected virtual void Start () {
         health = maxHealth;
         player = GameManager.player.transform;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
     }
 	
-	void Update () {
+	protected virtual void Update () {
 
         float distance = Vector3.Distance(new Vector3(player.position.x, 0, player.position.z), transform.position);
         transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
 
         if (state == WALKING && distance > stoppingDistance || state != WALKING && distance > startingDistance) {
-            transform.position += transform.forward * Time.deltaTime * velocity;
+            transform.position += transform.forward * Time.deltaTime * speed;
             state = WALKING;
         } else {
             // Too close to player, stop moving and hit them
+            Attack();
+            
             state = ATTACKING;
         }
 
@@ -67,4 +67,6 @@ public class Enemy : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
+    public abstract void Attack();
 }

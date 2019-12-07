@@ -306,11 +306,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4023020231279948}
   - component: {fileID: 95423621266125394}
-  - component: {fileID: 114430670234804002}
   - component: {fileID: 54426989371032574}
   - component: {fileID: 65686413001858652}
+  - component: {fileID: 114598843036506470}
   m_Layer: 0
-  m_Name: SpellcastingSkeleton
+  m_Name: SkeletonMage
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,7 +698,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114430670234804002
+--- !u!114 &114598843036506470
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -706,14 +706,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1715260778085932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1133a6282ae62c049a96d34a70fe25be, type: 3}
+  m_Script: {fileID: 11500000, guid: cb297884c3a81a742bd1ff95ec0c5595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 2
+  speed: 2
   maxHealth: 100
-  damage: 1
-  stoppingDistance: 10
-  startingDistance: 13
+  stoppingDistance: 20
+  startingDistance: 23
+  projectile: {fileID: 1817036765437818, guid: 1af7c0846a12ea947827841b4272e4f3, type: 2}
+  shotDelay: 1
+  projectileSpeed: 10
+  projectileSpawnOffset: {x: -1, y: 11, z: 9}
 --- !u!137 &137185624907746532
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

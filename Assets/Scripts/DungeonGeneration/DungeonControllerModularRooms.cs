@@ -15,10 +15,14 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject floor;
     public GameObject ceiling;
     public GameObject bossTeleporter;
+    public GameObject wandPickup;
+    private const float PICKUP_HEIGHT = 2f;
+    private float rewardChance = 1f;
     public const int ROOM_SIZE = 30;
 
     public GameObject[] enemies;
     public GameObject[] bosses;
+    public GameObject[] wands;
 
     public int numEnemiesPerRoom = 2;
     public int enemiesIncreasePerLevel = 1;
@@ -114,18 +118,27 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 break;
             case (RoomType.END):
                 GameObject teleporter = Instantiate(bossTeleporter, roomOrigin, Quaternion.Euler(0, 0, 0), newRoomObj.transform);
-                teleporter.GetComponent<Teleporter>().SetDestination(new Vector3(0, 0, 0)/*NEED TO ADD DESTINATION!!*/); 
-                BossRoom bossRoom = newRoomObj.AddComponent<BossRoom>();
+                teleporter.GetComponent<Teleporter>().SetDestination(new Vector3(0, 0, 0));
+                teleporter.SetActive(false);
+                BossWaveCombatRoom bossRoom = newRoomObj.AddComponent<BossWaveCombatRoom>();
                 GameObject boss = bosses[Random.Range(0, bosses.Length)];
-                bossRoom.generateBoss(boss);
+                bossRoom.generateEnemies(enemies, numEnemiesPerRoom, 3);
                 bossRoom.teleporter = teleporter;
                 break;
-            case (RoomType.ALTAR):
-                /*newRoomObj.AddComponent<AltarRoom>();
-                break;*/
+            case (RoomType.DEAD_END):
             case (RoomType.ENEMY):
                 CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
                 combatRoom.generateEnemies(enemies, numEnemiesPerRoom);
+
+                if (Random.Range(0f, 1f) < rewardChance)
+                {
+                    WandPickup wp = Instantiate(wandPickup, newRoomObj.transform.position + (Vector3.up * PICKUP_HEIGHT), Quaternion.identity, newRoomObj.transform).GetComponent<WandPickup>();
+                    GameObject wand = wands[Random.Range(0, wands.Length)];
+                    wp.SetWand(wand);
+                    wp.gameObject.SetActive(false);
+                    combatRoom.SetReward(wp.gameObject);
+                }
+
                 break;
             default:
                 break;

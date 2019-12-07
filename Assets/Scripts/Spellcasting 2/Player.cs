@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     private const float MAX_HEALTH = 100f;
     private float health;
 
-    private List<Wand> wands;
+    public List<Wand> wands;
     private int curWand;
     private float timeSinceLastShot;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
         GameObject startingWand = GetComponentInChildren<Wand>().gameObject;
         wandContainer = startingWand.transform.parent;
         AddWand(startingWand);
+        startingWand.SetActive(true);
         curWand = 0;
     }
 
@@ -38,10 +39,28 @@ public class Player : MonoBehaviour {
             timeSinceLastShot = 0;
             FireProjectile();
         }
+
+        if (OVRInput.GetDown(OVRInput.Button.Four))
+        {
+            Debug.Log("swapping forward");
+            CycleWandsForward();
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Three))
+        {
+            Debug.Log("swapping backwards");
+            CycleWandsBackwards();
+        }
+
     }
 
     public void AddWand(GameObject wand)
     {
+        wand.transform.parent = wandContainer;
+        wand.transform.localPosition = Vector3.zero;
+        wand.transform.localScale = Vector3.one;
+        wand.transform.localRotation = Quaternion.identity;
+        wand.SetActive(false);
         wands.Add(wand.GetComponent<Wand>());
     }
 
@@ -57,12 +76,12 @@ public class Player : MonoBehaviour {
 
     private void SwapWands(int wandIndex)
     {
-        wands[curWand].Deactivate();
+        wands[curWand].gameObject.SetActive(false);
         curWand = wandIndex;
-        wands[curWand].Activate();
+        wands[curWand].gameObject.SetActive(true);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

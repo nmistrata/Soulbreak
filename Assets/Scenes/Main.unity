@@ -160,6 +160,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605da7a3d64658047bb6017e11a80c24, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &459442643
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440410073495806, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a28e7dc3dc91b4409e42be89f0da6e7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &665068097
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,14 +248,18 @@ MonoBehaviour:
   ceiling: {fileID: 1883394799698402, guid: 53bf2668852ed8e40b492fe0ea0a70fa, type: 2}
   bossTeleporter: {fileID: 1608423426267644, guid: 7db0494561a655442af302bf1fa5e457,
     type: 2}
+  wandPickup: {fileID: 1774534442769998, guid: ba4acc441ed0e6e46b833728e2069da0, type: 2}
   enemies:
   - {fileID: 1878981710080622, guid: 1c945e4deeb70fc4984d11a26c30a7f6, type: 2}
   - {fileID: 1715260778085932, guid: 7c009ab9c3cd4a0488f7543acf93537c, type: 2}
   bosses:
   - {fileID: 1878981710080622, guid: 1c945e4deeb70fc4984d11a26c30a7f6, type: 2}
+  wands:
+  - {fileID: 1092529483810938, guid: ef6a66df66c5ded4383e322e4cb95af3, type: 2}
+  - {fileID: 1774415685781444, guid: 062dce8f378be8b47a16ab957a638376, type: 2}
   numEnemiesPerRoom: 2
   enemiesIncreasePerLevel: 1
-  mainPathLength: 2
+  mainPathLength: 10
   pathLengthIncreasePerLevel: 1
 --- !u!1 &1134013298
 GameObject:
@@ -315,3 +361,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b001faa93e10bd4bb1c940d333e5a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wands: []

@@ -8,7 +8,7 @@ public class Wand : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed;
     public float shotDelay; //seconds
-    public float WAND_HEIGHT = 0;
+    public const float WAND_HEIGHT = .5f;
 
     private int id;
 
@@ -27,16 +27,6 @@ public class Wand : MonoBehaviour
     public bool Equals(Wand other)
     {
         return other.GetId() == id;
-    }
-
-    public void Activate()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void Deactivate()
-    {
-        gameObject.SetActive(true);
     }
 
 }

@@ -11,9 +11,7 @@ public class BossRoom : Room
     protected override void ClearRoom()
     {
         base.ClearRoom();
-        teleporter.GetComponentInChildren<ParticleSystem>().Play();
-        teleporter.GetComponentInChildren<Light>().enabled = true;
-        teleporter.GetComponent<Teleporter>().enabled = true;
+        teleporter.SetActive(true);
 
     }
 

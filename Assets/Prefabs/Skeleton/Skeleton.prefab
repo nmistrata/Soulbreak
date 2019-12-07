@@ -306,9 +306,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4577089486887502}
   - component: {fileID: 95355341053406352}
-  - component: {fileID: 114823459204187670}
   - component: {fileID: 54792956642286692}
   - component: {fileID: 65272088273746114}
+  - component: {fileID: 114820282636919040}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -698,7 +698,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114823459204187670
+--- !u!114 &114820282636919040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -706,14 +706,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1878981710080622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1133a6282ae62c049a96d34a70fe25be, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bcc4147dbf1736469ab3b7dc40f073b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 2
+  speed: 2
   maxHealth: 100
-  damage: 1
   stoppingDistance: 1.5
-  startingDistance: 2.2
+  startingDistance: 3
+  damage: 5
 --- !u!137 &137873168536944628
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

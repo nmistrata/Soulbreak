@@ -5,6 +5,7 @@ using UnityEngine;
 public class CombatRoom : Room
 {
     private GameObject[] enemies = null;
+    private GameObject reward = null;
     private bool active = false;
     private bool allenemiesSpawned = false;
     private const float SPAWN_DELAY = .7f;
@@ -23,7 +24,7 @@ public class CombatRoom : Room
             {
                 if (enemies[i].activeSelf) { enemiesRemaining = true; break; };
             }
-            if (!enemiesRemaining) { ClearRoom(); OpenDoors(); }
+            if (!enemiesRemaining) { ClearRoom(); OpenDoors(); SpawnReward(); }
         }
     }
 
@@ -49,6 +50,19 @@ public class CombatRoom : Room
         if (index == enemies.Length - 1)
         {
             allenemiesSpawned = true;
+        }
+    }
+
+    public void SetReward(GameObject reward)
+    {
+        this.reward = reward;
+    }
+    
+    private void SpawnReward()
+    {
+        if (reward != null)
+        {
+            reward.SetActive(true);
         }
     }
 
