@@ -8,13 +8,7 @@ public class RangedEnemy : Enemy {
     public float shotDelay;
     public float projectileSpeed;
     public Vector3 projectileSpawnOffset;
-    private float timeSinceLastAttack;
-
-    override protected void Start()
-    {
-        base.Start();
-        timeSinceLastAttack = 0;
-    }
+    private float timeSinceLastAttack = 0;
 
     override protected void Update()
     {
@@ -31,6 +25,7 @@ public class RangedEnemy : Enemy {
         if (timeSinceLastAttack > shotDelay)
         {
             SpawnProjectile();
+            PlaySound(attackSound);
             timeSinceLastAttack = 0;
         }
     }
@@ -41,5 +36,10 @@ public class RangedEnemy : Enemy {
         Vector3 launchDirection = (player.position - proj.transform.position).normalized;
         proj.transform.SetParent(null);
         proj.GetComponent<Rigidbody>().velocity = projectileSpeed * launchDirection;
+    }
+
+    override public void SetLevel(int level)
+    {
+        maxHealth = baseHealth + (level - 1) * healthPerLevel;
     }
 }

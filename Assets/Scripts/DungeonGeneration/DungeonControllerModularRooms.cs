@@ -35,18 +35,17 @@ public class DungeonControllerModularRooms : MonoBehaviour
     private GameObject curLevelObj;
     private GameObject nextLevelObj;
 
-    // Start is called before the first frame update
     void Start()
     {
-        curLevel = 1;
         curLevelObj = GenerateFirstLevel();
     }
 
     private GameObject GenerateFirstLevel()
     {
+        curLevel = 0;
         DungeonLayout layout = new DungeonLayout(mainPathLength, sidePathMaxLength);
         RoomIdentifier[] identifiers = layout.GetRoomIdentifiers();
-        GameObject newLevelObj = new GameObject("level_" + curLevel);
+        GameObject newLevelObj = new GameObject("level_" + (curLevel + 1));
         newLevelObj.transform.position = Vector3.zero;
         newLevelObj.transform.parent = transform;
         foreach (RoomIdentifier i in identifiers)
@@ -57,6 +56,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
         mainPathLength += pathLengthIncreasePerLevel;
         sidePathMaxLength = mainPathLength / 3;
         StartCoroutine(GenerateNewLevelAsync());
+        curLevel = 1;
         return newLevelObj;
     }
 
@@ -122,13 +122,13 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 teleporter.SetActive(false);
                 BossWaveCombatRoom bossRoom = newRoomObj.AddComponent<BossWaveCombatRoom>();
                 GameObject boss = bosses[Random.Range(0, bosses.Length)];
-                bossRoom.generateEnemies(enemies, numEnemiesPerRoom, 3);
+                bossRoom.generateEnemies(enemies, numEnemiesPerRoom, 3, curLevel+1);
                 bossRoom.teleporter = teleporter;
                 break;
             case (RoomType.DEAD_END):
             case (RoomType.ENEMY):
                 CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
-                combatRoom.generateEnemies(enemies, numEnemiesPerRoom);
+                combatRoom.generateEnemies(enemies, numEnemiesPerRoom, curLevel+1);
 
                 if (Random.Range(0f, 1f) < rewardChance)
                 {

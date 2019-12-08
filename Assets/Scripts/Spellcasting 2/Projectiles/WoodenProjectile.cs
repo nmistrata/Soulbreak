@@ -6,7 +6,7 @@ public class WoodenProjectile : Projectile {
 
 	// Use this for initialization
 	void Start () {
-        damage = 20;
+        damage = 500;
         isFriendly = true;
 	}
 

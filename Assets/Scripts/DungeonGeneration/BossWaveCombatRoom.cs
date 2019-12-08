@@ -87,7 +87,7 @@ public class BossWaveCombatRoom : Room
     IEnumerator SpawnEnemy(int index, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        enemies[curWave-1, index].SetActive(true);
+        enemies[curWave-1, index].GetComponent<Enemy>().Spawn();
         if (index == enemies.GetLength(1) - 1)
         {
             allenemiesSpawned = true;
@@ -107,7 +107,7 @@ public class BossWaveCombatRoom : Room
         }
     }
 
-    public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies, int numWaves)
+    public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies, int numWaves, int enemyLevel)
     {
         this.numWaves = numWaves;
         enemies = new GameObject[numWaves, numEnemies];
@@ -121,6 +121,7 @@ public class BossWaveCombatRoom : Room
                 float zPos = Random.Range(-roomSize / 2 + 2f, roomSize / 2 - 2f);
                 Vector3 spawnLocation = transform.position + new Vector3(xPos, yPos, zPos);
                 enemies[i, j] = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], spawnLocation, Quaternion.identity, transform);
+                enemies[i, j].GetComponent<Enemy>().SetLevel(enemyLevel);
                 enemies[i, j].SetActive(false);
             }
         }

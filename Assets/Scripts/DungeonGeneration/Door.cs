@@ -11,6 +11,7 @@ public class Door : MonoBehaviour {
 
     private Transform leftDoor;
     private Transform rightDoor;
+    private AudioSource audio;
 
     private bool cleared;
     public bool locked;
@@ -20,6 +21,7 @@ public class Door : MonoBehaviour {
         openShapeKey = 0;
         leftDoor = transform.GetChild(0);
         rightDoor = transform.GetChild(1);
+        audio = GetComponent<AudioSource>();
         cleared = false;
         locked = false;
     }
@@ -28,6 +30,7 @@ public class Door : MonoBehaviour {
     {
         if (openShapeKey == 100)
         {
+            audio.Stop();
             CancelInvoke("Open");
         }
         else
@@ -42,6 +45,7 @@ public class Door : MonoBehaviour {
     {
         if (openShapeKey == 0)
         {
+            audio.Stop();
             CancelInvoke("Close");
         }
         else
@@ -94,6 +98,8 @@ public class Door : MonoBehaviour {
     {
         if (!IsInvoking("Close"))
         {
+            audio.Stop();
+            audio.Play();
             CancelInvoke("Open");
             InvokeRepeating("Close", 0f, openTime / 100f);
         }
@@ -103,6 +109,8 @@ public class Door : MonoBehaviour {
     {
         if (!IsInvoking("Open"))
         {
+            audio.Stop();
+            audio.Play();
             CancelInvoke("Close");
             InvokeRepeating("Open", 0f, openTime / 100f);
         }

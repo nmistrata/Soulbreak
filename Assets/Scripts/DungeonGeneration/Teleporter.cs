@@ -9,9 +9,12 @@ public class Teleporter : MonoBehaviour {
     private Vector3 destination;
     private bool destinationSet = false;
 
+    public AudioSource audioSource;
+
     private void Start()
     {
         teleportTimer = teleportDelay;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,11 +33,20 @@ public class Teleporter : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && enabled)
+        {
+            audioSource.Play();
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             teleportTimer = teleportDelay;
+            audioSource.Stop();
         }
     }
 

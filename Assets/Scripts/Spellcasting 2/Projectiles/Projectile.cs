@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour {
 
     protected bool isFriendly;
-    protected int damage;
+    protected float damage;
+
+
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
@@ -27,6 +29,11 @@ public abstract class Projectile : MonoBehaviour {
 
         //Play sound effect?
         Destroy(this.gameObject);
+    }
+
+    public void MultiplyDamage(float multiplier)
+    {
+        damage *= multiplier;
     }
 
 }

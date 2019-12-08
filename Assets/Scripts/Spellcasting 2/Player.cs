@@ -9,9 +9,16 @@ public class Player : MonoBehaviour {
 
     public List<Wand> wands;
     private int curWand;
+
     private float timeSinceLastShot;
+    private float timeSinceOof = 0;
 
     private Transform wandContainer;
+
+    private AudioSource audioSource;
+    public AudioClip swapWandsAudio;
+    public AudioClip newWandAudio;
+    public AudioClip oof;
 
     private void Awake()
     {
@@ -24,6 +31,8 @@ public class Player : MonoBehaviour {
         timeSinceLastShot = 0f;
         wands = new List<Wand>();
 
+        audioSource = GetComponent<AudioSource>();
+
         GameObject startingWand = GetComponentInChildren<Wand>().gameObject;
         wandContainer = startingWand.transform.parent;
         AddWand(startingWand);
@@ -34,6 +43,7 @@ public class Player : MonoBehaviour {
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
+        timeSinceOof += Time.deltaTime;
         if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && timeSinceLastShot > wands[curWand].shotDelay)
         {
             timeSinceLastShot = 0;
@@ -51,17 +61,30 @@ public class Player : MonoBehaviour {
             Debug.Log("swapping backwards");
             CycleWandsBackwards();
         }
-
+        
     }
 
     public void AddWand(GameObject wand)
     {
+        if (wands.Count != 0) { audioSource.PlayOneShot(newWandAudio); }
+
+        Wand wandScript = wand.GetComponent<Wand>();
+        for (int i = 0; i < wands.Count; i++) //checks if the wand is a duplicate
+        {
+            if (wands[i].Equals(wandScript))
+            {
+                wands[i].LevelUp();
+                Destroy(wand);
+                return;
+            }
+        }
+
         wand.transform.parent = wandContainer;
         wand.transform.localPosition = Vector3.zero;
         wand.transform.localScale = Vector3.one;
         wand.transform.localRotation = Quaternion.identity;
-        wand.SetActive(false);
         wands.Add(wand.GetComponent<Wand>());
+        wand.SetActive(false);
     }
 
     public void CycleWandsForward()
@@ -76,6 +99,8 @@ public class Player : MonoBehaviour {
 
     private void SwapWands(int wandIndex)
     {
+        if (wandIndex == curWand) return;
+        audioSource.PlayOneShot(swapWandsAudio);
         wands[curWand].gameObject.SetActive(false);
         curWand = wandIndex;
         wands[curWand].gameObject.SetActive(true);
@@ -84,6 +109,13 @@ public class Player : MonoBehaviour {
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        if (timeSinceOof > 2f || damage > 2)
+        {
+            audioSource.PlayOneShot(oof);
+            timeSinceOof = 0;
+        }
+
         if (health <= 0)
         {
             //TODO gameover

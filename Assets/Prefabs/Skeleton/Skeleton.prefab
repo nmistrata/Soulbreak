@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 54792956642286692}
   - component: {fileID: 65272088273746114}
   - component: {fileID: 114820282636919040}
+  - component: {fileID: 82248176940949878}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -680,6 +681,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.6087775, y: 12.830828, z: 3.6937308}
   m_Center: {x: 0.012025833, y: 6.838423, z: -0.10895938}
+--- !u!82 &82248176940949878
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878981710080622}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95355341053406352
 Animator:
   serializedVersion: 3
@@ -710,10 +806,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxHealth: 100
+  baseHealth: 100
+  healthPerLevel: 30
   stoppingDistance: 1.5
   startingDistance: 3
-  damage: 5
+  walking: {fileID: 8300000, guid: e2fec2e1ac1cc6c43bc72acd3095cd1d, type: 3}
+  spawn: {fileID: 8300000, guid: 42afcf6523218db45927b284200dd24a, type: 3}
+  attack: {fileID: 0}
+  getHit: {fileID: 8300000, guid: a6c52be425e759f46b89cae2e2d45dbb, type: 3}
+  death: {fileID: 8300000, guid: 21d845462b6fea244a3aa4ac7d7f4f7c, type: 3}
+  baseDamage: 10
+  damagePerLevel: 1
 --- !u!137 &137873168536944628
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

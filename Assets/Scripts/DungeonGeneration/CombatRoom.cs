@@ -46,7 +46,7 @@ public class CombatRoom : Room
     IEnumerator SpawnEnemy(int index, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        enemies[index].SetActive(true);
+        enemies[index].GetComponent<Enemy>().Spawn();
         if (index == enemies.Length - 1)
         {
             allenemiesSpawned = true;
@@ -66,7 +66,7 @@ public class CombatRoom : Room
         }
     }
 
-    public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies)
+    public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies, int enemyLevel)
     {
 
         enemies = new GameObject[numEnemies];
@@ -78,6 +78,7 @@ public class CombatRoom : Room
             float zPos = Random.Range(-roomSize / 2 +2f, roomSize / 2 - 2f);
             Vector3 spawnLocation = transform.position + new Vector3(xPos, yPos, zPos);
             enemies[i] = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], spawnLocation, Quaternion.identity, transform);
+            enemies[i].GetComponent<Enemy>().SetLevel(enemyLevel);
             enemies[i].SetActive(false);
         }
     }
