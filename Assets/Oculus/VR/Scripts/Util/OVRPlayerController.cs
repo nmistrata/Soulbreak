@@ -354,9 +354,11 @@ public class OVRPlayerController : MonoBehaviour
 			// Compute this for key movement
 			float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
+            /*
 			// Run!
 			if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 				moveInfluence *= 2.0f;
+                */
 
 			Quaternion ort = transform.rotation;
 			Vector3 ortEuler = ort.eulerAngles;
@@ -377,7 +379,7 @@ public class OVRPlayerController : MonoBehaviour
 			moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
-			moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+			moveInfluence *= 1.0f /* + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger)*/; 
 #endif
 
 			Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);

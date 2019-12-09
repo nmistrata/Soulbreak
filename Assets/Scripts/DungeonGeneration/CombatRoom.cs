@@ -60,7 +60,7 @@ public class CombatRoom : Room
     
     private void SpawnReward()
     {
-        if (reward != null)
+        if (reward != null && !GameManager.gameOver)
         {
             reward.SetActive(true);
         }

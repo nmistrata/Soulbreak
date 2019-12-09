@@ -17,26 +17,35 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public GameObject bossTeleporter;
     public GameObject wandPickup;
     private const float PICKUP_HEIGHT = 2f;
-    private float rewardChance = 1f;
+    private float RewardChance = 1f;
     public const int ROOM_SIZE = 30;
 
     public GameObject[] enemies;
     public GameObject[] bosses;
     public GameObject[] wands;
 
-    public int numEnemiesPerRoom = 2;
+    public int baseNumEnemiesPerRoom = 2;
+    private int numEnemiesPerRoom;
     public int enemiesIncreasePerLevel = 1;
 
-    public int mainPathLength = 2;
+    public int baseMainPathLength = 2;
+    private int mainPathLength;
     public int pathLengthIncreasePerLevel = 1;
     private int sidePathMaxLength = 0;
 
-    private int curLevel;
+    public int curLevel;
     private GameObject curLevelObj;
     private GameObject nextLevelObj;
 
+    private void Awake()
+    {
+        GameManager.dungeon = this;
+    }
+
     void Start()
     {
+        mainPathLength = baseMainPathLength;
+        numEnemiesPerRoom = baseNumEnemiesPerRoom;
         curLevelObj = GenerateFirstLevel();
     }
 
@@ -55,8 +64,8 @@ public class DungeonControllerModularRooms : MonoBehaviour
         numEnemiesPerRoom += enemiesIncreasePerLevel;
         mainPathLength += pathLengthIncreasePerLevel;
         sidePathMaxLength = mainPathLength / 3;
-        StartCoroutine(GenerateNewLevelAsync());
         curLevel = 1;
+        StartCoroutine(GenerateNewLevelAsync());
         return newLevelObj;
     }
 
@@ -130,7 +139,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 CombatRoom combatRoom = newRoomObj.AddComponent<CombatRoom>();
                 combatRoom.generateEnemies(enemies, numEnemiesPerRoom, curLevel+1);
 
-                if (Random.Range(0f, 1f) < rewardChance)
+                if (Random.Range(0f, 1f) < RewardChance)
                 {
                     WandPickup wp = Instantiate(wandPickup, newRoomObj.transform.position + (Vector3.up * PICKUP_HEIGHT), Quaternion.identity, newRoomObj.transform).GetComponent<WandPickup>();
                     GameObject wand = wands[Random.Range(0, wands.Length)];
@@ -148,5 +157,12 @@ public class DungeonControllerModularRooms : MonoBehaviour
         boxCollider.size = new Vector3(ROOM_SIZE, ROOM_SIZE, ROOM_SIZE);
         boxCollider.isTrigger = true;
         newRoomObj.tag = "Invisible";
+    }
+
+    public void Restart()
+    {
+        Destroy(curLevelObj);
+        Destroy(nextLevelObj);
+        Start();
     }
 }

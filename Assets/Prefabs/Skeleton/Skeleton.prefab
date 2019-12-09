@@ -484,7 +484,7 @@ Transform:
   m_GameObject: {fileID: 1878981710080622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.23, y: 0.23, z: 0.23}
   m_Children:
   - {fileID: 4173894237149174}
   - {fileID: 4949397105876108}
@@ -812,7 +812,7 @@ MonoBehaviour:
   startingDistance: 3
   walking: {fileID: 8300000, guid: e2fec2e1ac1cc6c43bc72acd3095cd1d, type: 3}
   spawn: {fileID: 8300000, guid: 42afcf6523218db45927b284200dd24a, type: 3}
-  attack: {fileID: 0}
+  attackSound: {fileID: 0}
   getHit: {fileID: 8300000, guid: a6c52be425e759f46b89cae2e2d45dbb, type: 3}
   death: {fileID: 8300000, guid: 21d845462b6fea244a3aa4ac7d7f4f7c, type: 3}
   baseDamage: 10

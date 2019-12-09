@@ -32,6 +32,7 @@ public class Player : MonoBehaviour {
         wands = new List<Wand>();
 
         audioSource = GetComponent<AudioSource>();
+        audioSource.ignoreListenerPause = true;
 
         GameObject startingWand = GetComponentInChildren<Wand>().gameObject;
         wandContainer = startingWand.transform.parent;
@@ -42,25 +43,51 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
+
+        if (GameManager.gameOver)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.One))
+            {
+                GameManager.Restart();
+            }
+            if (OVRInput.GetDown(OVRInput.Button.Two))
+            {
+                GameManager.ExitToMenu();
+            }
+        } else {
+            if (GameManager.isPaused) {
+                if (OVRInput.GetDown(OVRInput.Button.One))
+                {
+                    GameManager.TogglePause();
+                }
+                if (OVRInput.GetDown(OVRInput.Button.Two))
+                {
+                    GameManager.ExitToMenu();
+                }
+            } else {
+                if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && timeSinceLastShot > wands[curWand].shotDelay) {
+                    timeSinceLastShot = 0;
+                    FireProjectile();
+                }
+
+                if (OVRInput.GetDown(OVRInput.Button.One)) {
+                    CycleWandsForward();
+                }
+
+                if (OVRInput.GetDown(OVRInput.Button.Two)) {
+                    CycleWandsBackwards();
+                }
+            }
+
+        }
+
+        if (!GameManager.gameOver && OVRInput.GetDown(OVRInput.Button.Start))
+        {
+            GameManager.TogglePause();
+        }
         timeSinceLastShot += Time.deltaTime;
         timeSinceOof += Time.deltaTime;
-        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) && timeSinceLastShot > wands[curWand].shotDelay)
-        {
-            timeSinceLastShot = 0;
-            FireProjectile();
-        }
-
-        if (OVRInput.GetDown(OVRInput.Button.Four))
-        {
-            Debug.Log("swapping forward");
-            CycleWandsForward();
-        }
-
-        if (OVRInput.GetDown(OVRInput.Button.Three))
-        {
-            Debug.Log("swapping backwards");
-            CycleWandsBackwards();
-        }
+        
         
     }
 
@@ -118,12 +145,27 @@ public class Player : MonoBehaviour {
 
         if (health <= 0)
         {
-            //TODO gameover
+            GameManager.EndGame();
         }
     }
 
     public void FireProjectile()
     {
         wands[curWand].SpawnProjectile();
+    }
+
+    public void Restart()
+    {
+        foreach (Wand w in wands)
+        {
+            if (w.id != 0)
+            {
+                Destroy(w.gameObject);
+            }
+        }
+        curWand = 0;
+        wands[curWand].gameObject.SetActive(true);
+        health = MAX_HEALTH;
+        transform.position = Vector3.zero;
     }
 }
