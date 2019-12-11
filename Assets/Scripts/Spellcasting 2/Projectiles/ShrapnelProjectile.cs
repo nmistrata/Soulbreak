@@ -6,7 +6,7 @@ public class ShrapnelProjectile : Projectile {
 
 	// Use this for initialization
 	void Start () {
-        damage = 4;
+        damage = 3;
         isFriendly = true;
 	}
 

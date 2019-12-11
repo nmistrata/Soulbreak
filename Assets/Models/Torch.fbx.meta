@@ -3,29 +3,14 @@ guid: ea3b0ee4c324e3941801547eb7aa14cd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Ring
-    100002: //RootNode
-    100004: Torch
-    100006: WallAnchor
-    400000: Ring
-    400002: //RootNode
-    400004: Torch
-    400006: WallAnchor
-    2100000: No Name
-    2100002: Wood
-    2100004: Rough Metal
-    2300000: Ring
-    2300002: Torch
-    2300004: WallAnchor
-    2300006: //RootNode
-    3300000: Ring
-    3300002: Torch
-    3300004: WallAnchor
-    3300006: //RootNode
-    4300000: Ring
-    4300002: WallAnchor
-    4300004: Torch
-    2186277476908879412: ImportLogs
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Wood
+    2100002: Metal
+    2100004: Cloth
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
   externalObjects: {}
   materials:
     importMaterials: 1

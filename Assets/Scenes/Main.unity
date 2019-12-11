@@ -1091,11 +1091,12 @@ MonoBehaviour:
     type: 2}
   wandPickup: {fileID: 1774534442769998, guid: ba4acc441ed0e6e46b833728e2069da0, type: 2}
   enemies:
-  - {fileID: 1715260778085932, guid: 7c009ab9c3cd4a0488f7543acf93537c, type: 2}
-  - {fileID: 1715260778085932, guid: 7c009ab9c3cd4a0488f7543acf93537c, type: 2}
-  bosses:
+  - {fileID: 1145631068877580, guid: 7c009ab9c3cd4a0488f7543acf93537c, type: 2}
   - {fileID: 1878981710080622, guid: 1c945e4deeb70fc4984d11a26c30a7f6, type: 2}
+  - {fileID: 1430977891139142, guid: 90946edccc75d314c9af9019e1dbda44, type: 2}
   wands:
+  - {fileID: 1853172300759982, guid: fbb485f13591b3747856160b5e1a3bf1, type: 2}
+  - {fileID: 1774415685781444, guid: 062dce8f378be8b47a16ab957a638376, type: 2}
   - {fileID: 1092529483810938, guid: ef6a66df66c5ded4383e322e4cb95af3, type: 2}
   baseNumEnemiesPerRoom: 2
   enemiesIncreasePerLevel: 1
@@ -2249,11 +2250,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: e4a94b09c1e707c43ba94f340c48dffe, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

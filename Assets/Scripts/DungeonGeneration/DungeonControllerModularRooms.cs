@@ -21,7 +21,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
     public const int ROOM_SIZE = 30;
 
     public GameObject[] enemies;
-    public GameObject[] bosses;
+    //public GameObject[] bosses;
     public GameObject[] wands;
 
     public int baseNumEnemiesPerRoom = 2;
@@ -130,7 +130,7 @@ public class DungeonControllerModularRooms : MonoBehaviour
                 teleporter.GetComponent<Teleporter>().SetDestination(new Vector3(0, 0, 0));
                 teleporter.SetActive(false);
                 BossWaveCombatRoom bossRoom = newRoomObj.AddComponent<BossWaveCombatRoom>();
-                GameObject boss = bosses[Random.Range(0, bosses.Length)];
+                //GameObject boss = bosses[Random.Range(0, bosses.Length)];
                 bossRoom.generateEnemies(enemies, numEnemiesPerRoom, 3, curLevel+1);
                 bossRoom.teleporter = teleporter;
                 break;

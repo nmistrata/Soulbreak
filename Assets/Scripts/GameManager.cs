@@ -105,6 +105,7 @@ public static class GameManager
     public static void Restart()
     {
         dungeon.Restart();
+        player.GetComponent<Player>().Restart();
         HidePauseScreen();
         HideGameOverScreen();
         gameOver = false;

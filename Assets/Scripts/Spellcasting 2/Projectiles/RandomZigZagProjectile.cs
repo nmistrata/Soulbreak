@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomZigZagProjectile : Projectile {
 
     private Rigidbody rb;
-    private const float RANDOMNESS = .25f; //0 to 1
+    private const float RANDOMNESS = .14f; //0 to 1
     private const float DIRECTION_CHANGE_INTERVAL = .2f; //in seconds
 
     // Use this for initialization

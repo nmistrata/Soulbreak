@@ -19,12 +19,11 @@ public abstract class Enemy : MonoBehaviour {
     public float stoppingDistance = 1.5f;
     public float startingDistance = 3f;
 
-    public AudioClip walking;
     public AudioClip spawn;
     public AudioClip attackSound;
     public AudioClip getHit;
-    public AudioClip death;
-    protected AudioSource audioSource;
+    public AudioSource oneShotAudio;
+    public AudioSource walkingAudio;
 
     private int state;
     private const int IDLE = 0;
@@ -41,6 +40,7 @@ public abstract class Enemy : MonoBehaviour {
         player = GameManager.player.transform;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        state = WALKING;
     }
 	
 	protected virtual void Update () {
@@ -48,13 +48,12 @@ public abstract class Enemy : MonoBehaviour {
         float distance = Vector3.Distance(new Vector3(player.position.x, 0, player.position.z), transform.position);
         transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
 
-        if (state == WALKING && distance > stoppingDistance || state != WALKING && distance > startingDistance) {
+        if ((state == WALKING && distance > stoppingDistance) || (state != WALKING && distance > startingDistance)) {
             transform.position += transform.forward * Time.deltaTime * speed;
             state = WALKING;
-            //PlaySound(walking, true);
+            walkingAudio.Play();
         } else {
-            StopLoopingSound();
-            // Too close to player, stop moving and hit them
+            walkingAudio.Stop();
             Attack();
             state = ATTACKING;
         }
@@ -71,7 +70,7 @@ public abstract class Enemy : MonoBehaviour {
         health -= damage;
         if(timeSinceLastHit > .2f)
         {
-            PlaySound(getHit);
+            oneShotAudio.PlayOneShot(getHit);
         }
         if (health <= 0)
         {
@@ -87,42 +86,14 @@ public abstract class Enemy : MonoBehaviour {
         return;
     }
 
-    protected void PlaySound(AudioClip clip, bool shouldLoop = false)
-    {
-        Debug.Log(clip.name);
-        Debug.Log(audioSource);
-        if (shouldLoop)
-        {
-            if (audioSource.clip == clip)
-            {
-                return;
-            }
-            StopLoopingSound();
-            audioSource.clip = clip;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
-        else {
-            audioSource.PlayOneShot(clip, 1f);
-        }
-    }
-
     public void Die()
     {
-        //PlaySound(death);
         gameObject.SetActive(false);
     }
 
     public void Spawn()
     {
         gameObject.SetActive(true);
-        audioSource = GetComponent<AudioSource>();
-        PlaySound(spawn);
-    }
-
-    private void StopLoopingSound()
-    {
-        audioSource.Stop();
-        audioSource.clip = null;
+        oneShotAudio.PlayOneShot(spawn);
     }
 }

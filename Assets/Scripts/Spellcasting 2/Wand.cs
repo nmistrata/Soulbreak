@@ -19,17 +19,17 @@ public class Wand : MonoBehaviour
 
     public int id;
 
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip shootSound;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSound;
     }
 
     public void SpawnProjectile()
     {
-        GameObject proj = Instantiate(projectile, transform.position + transform.up*WAND_HEIGHT, transform.rotation);
-        proj.transform.SetParent(null);
+        GameObject proj = Instantiate(projectile, transform.position + transform.up*WAND_HEIGHT, Quaternion.LookRotation(transform.up, transform.forward), null);
         proj.GetComponent<Projectile>().MultiplyDamage(damageMultiplier);
         proj.GetComponent<Rigidbody>().velocity = projectileSpeed * transform.up;
         audioSource.Play();

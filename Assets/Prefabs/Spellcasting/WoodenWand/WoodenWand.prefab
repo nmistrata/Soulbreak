@@ -197,5 +197,4 @@ MonoBehaviour:
   damageMultiplierPerLevel: 1
   delayMultiplierPerLevel: 1
   id: 0
-  audioSource: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2747c57994134b24c80333ff71ef5b5a, type: 3}

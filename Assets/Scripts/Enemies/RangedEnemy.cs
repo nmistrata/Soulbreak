@@ -25,7 +25,7 @@ public class RangedEnemy : Enemy {
         if (timeSinceLastAttack > shotDelay)
         {
             SpawnProjectile();
-            PlaySound(attackSound);
+            oneShotAudio.PlayOneShot(attackSound);
             timeSinceLastAttack = 0;
         }
     }
