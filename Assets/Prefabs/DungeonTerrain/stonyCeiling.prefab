@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33074775677592596}
   - component: {fileID: 23058867441480330}
   - component: {fileID: 65369757063522638}
+  - component: {fileID: 54752650743802824}
   m_Layer: 0
   m_Name: stonyCeiling
   m_TagString: Untagged
@@ -85,6 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1883394799698402}
   m_Mesh: {fileID: 4300002, guid: e47aabdbd6a251a45b27e550cc724cd4, type: 3}
+--- !u!54 &54752650743802824
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883394799698402}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &65369757063522638
 BoxCollider:
   m_ObjectHideFlags: 1

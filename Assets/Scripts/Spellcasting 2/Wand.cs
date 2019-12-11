@@ -15,7 +15,7 @@ public class Wand : MonoBehaviour
 
     private float damageMultiplier = 1f;
 
-    private int Level = 1;
+    private int level = 1;
 
     public int id;
 
@@ -49,10 +49,11 @@ public class Wand : MonoBehaviour
     {
         damageMultiplier *= damageMultiplierPerLevel;
         shotDelay *= delayMultiplierPerLevel;
+        level++;
     }
 
     public int GetLevel()
     {
-        return Level;
+        return level;
     }
 }

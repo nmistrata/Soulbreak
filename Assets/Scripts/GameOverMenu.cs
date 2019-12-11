@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour {
 
+    public bool dissapeared;
+    public bool appeared;
+    private bool wasToggled;
     public Text floorsClimbedText;
 
     // Use this for initialization
@@ -13,8 +16,40 @@ public class GameOverMenu : MonoBehaviour {
         GameManager.gameOverScreen = gameObject;
     }
 
-    public void UpdateFloorsClimbed(int floorsClimbed)
+    private void FixedUpdate()
     {
-        floorsClimbedText.text = "You Defeated " + floorsClimbed + " Floors!";
+        if (wasToggled)
+        {
+            if (appeared)
+            {
+                GameManager.PauseAction();
+            }
+            wasToggled = false;
+            appeared = false;
+            dissapeared = false;
+        }
+        else if (appeared || dissapeared)
+        {
+            wasToggled = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (appeared)
+        {
+            foreach (MeshRenderer m in other.gameObject.GetComponentsInChildren<MeshRenderer>())
+            {
+                m.enabled = false;
+            }
+        }
+        else if (dissapeared)
+        {
+            foreach (MeshRenderer m in other.gameObject.GetComponentsInChildren<MeshRenderer>())
+            {
+                m.enabled = true;
+            }
+
+        }
     }
 }
