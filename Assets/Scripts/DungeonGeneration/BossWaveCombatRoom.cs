@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossWaveCombatRoom : Room
 {
 
-    public GameObject[,] enemies = null;
+    public List<GameObject>[] enemies = null;
     private GameObject reward = null;
     public GameObject teleporter;
 
@@ -26,9 +26,9 @@ public class BossWaveCombatRoom : Room
         if (allenemiesSpawned)
         {
             bool enemiesRemaining = false;
-            for (int i = 0; i < enemies.GetLength(1); i++)
+            for (int i = 0; i < enemies[curWave - 1].Count; i++)
             {
-                if (enemies[curWave-1, i].activeSelf) { enemiesRemaining = true; break; };
+                if (enemies[curWave-1][i].activeSelf) { enemiesRemaining = true; break; };
             }
             if (!enemiesRemaining)
             {
@@ -70,7 +70,7 @@ public class BossWaveCombatRoom : Room
     private void SpawnWave()
     {
         allenemiesSpawned = false;
-        for (int i = 0; i < enemies.GetLength(1); i++)
+        for (int i = 0; i < enemies[curWave - 1].Count; i++)
         {
             StartCoroutine(SpawnEnemy(i, i * SPAWN_DELAY));
         }
@@ -87,8 +87,8 @@ public class BossWaveCombatRoom : Room
     IEnumerator SpawnEnemy(int index, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        enemies[curWave-1, index].GetComponent<Enemy>().Spawn();
-        if (index == enemies.GetLength(1) - 1)
+        enemies[curWave-1][index].GetComponent<Enemy>().Spawn();
+        if (index == enemies[curWave-1].Count - 1)
         {
             allenemiesSpawned = true;
         }
@@ -110,19 +110,33 @@ public class BossWaveCombatRoom : Room
     public virtual void generateEnemies(GameObject[] enemyTypes, int numEnemies, int numWaves, int enemyLevel)
     {
         this.numWaves = numWaves;
-        enemies = new GameObject[numWaves, numEnemies];
+        enemies = new List<GameObject>[numWaves];
         for (int i = 0; i < numWaves; i++)
         {
-            for (int j = 0; j < numEnemies; j++)
+            enemies[i] = new List<GameObject>(numEnemies);
+            int thisWaveNumEnemies = numEnemies;
+            for (int j = 0; j < thisWaveNumEnemies; j++)
             {
                 float roomSize = DungeonControllerModularRooms.ROOM_SIZE;
                 float xPos = Random.Range(-roomSize / 2 + 2f, roomSize / 2 - 2f);
                 float yPos = 0;
                 float zPos = Random.Range(-roomSize / 2 + 2f, roomSize / 2 - 2f);
                 Vector3 spawnLocation = transform.position + new Vector3(xPos, yPos, zPos);
-                enemies[i, j] = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], spawnLocation, Quaternion.identity, transform);
-                enemies[i, j].GetComponent<Enemy>().SetLevel(enemyLevel);
-                enemies[i, j].SetActive(false);
+                GameObject enemyType = enemyTypes[Random.Range(0, enemyTypes.Length)];
+                enemies[i].Add(Instantiate(enemyType, spawnLocation, Quaternion.identity, transform));
+                enemies[i][j].GetComponent<Enemy>().SetLevel(enemyLevel);
+                enemies[i][j].SetActive(false);
+                if (enemyType.GetComponent<Enemy>().baseHealth < 50)
+                {
+                    thisWaveNumEnemies++;
+                    j++;
+                    xPos = Random.Range(-roomSize / 2 + 2f, roomSize / 2 - 2f);
+                    zPos = Random.Range(-roomSize / 2 + 2f, roomSize / 2 - 2f);
+                    spawnLocation = transform.position + new Vector3(xPos, yPos, zPos);
+                    enemies[i].Add(Instantiate(enemyType, spawnLocation, Quaternion.identity, transform));
+                    enemies[i][j].GetComponent<Enemy>().SetLevel(enemyLevel);
+                    enemies[i][j].SetActive(false);
+                }
             }
         }
     }

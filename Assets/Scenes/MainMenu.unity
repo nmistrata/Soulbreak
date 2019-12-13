@@ -716,8 +716,7 @@ MonoBehaviour:
     Wands Backwards\nHold Left Trigger\t\t: \tDisplay Player Stats\nStart\t\t\t\t\t\t\t:\tPause\n\nCollect
     multiple of the same wand to upgrade it.\nClear a room of enemies to unlock the
     doors.\nThe boss room of each floor has 3 waves, clear them and step into the
-    teleporter to proceed.\nEvery cleared room has a chance of giving you an upgrade,
-    good luck!"
+    teleporter to proceed.\nGood Luck!"
 --- !u!222 &438172342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1504,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: -374}
+  m_AnchoredPosition: {x: 100, y: -343}
   m_SizeDelta: {x: 748.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573138518

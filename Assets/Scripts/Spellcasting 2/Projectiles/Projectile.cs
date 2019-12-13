@@ -31,7 +31,7 @@ public abstract class Projectile : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    public void MultiplyDamage(float multiplier)
+    public virtual void MultiplyDamage(float multiplier)
     {
         damage *= multiplier;
     }

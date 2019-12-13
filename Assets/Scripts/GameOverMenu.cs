@@ -55,6 +55,6 @@ public class GameOverMenu : MonoBehaviour {
 
     private void Update()
     {
-        floorsClimbedText.text = "You Defeated " + (GameManager.dungeon.curLevel - 1) + " Floors!";
+        floorsClimbedText.text = "You Defeated " + (GameManager.dungeon.curLevel - 1) + ((GameManager.dungeon.curLevel-1 == 1) ? " Floor!" : " Floors!");
     }
 }

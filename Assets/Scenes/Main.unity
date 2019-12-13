@@ -438,7 +438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -206}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 748.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186887231
@@ -810,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -207}
   m_SizeDelta: {x: 748.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586334875
@@ -1098,6 +1098,7 @@ MonoBehaviour:
   - {fileID: 1853172300759982, guid: fbb485f13591b3747856160b5e1a3bf1, type: 2}
   - {fileID: 1774415685781444, guid: 062dce8f378be8b47a16ab957a638376, type: 2}
   - {fileID: 1092529483810938, guid: ef6a66df66c5ded4383e322e4cb95af3, type: 2}
+  - {fileID: 1506439368160726, guid: 04aec31d6ea36f64a94eaa4086bee033, type: 2}
   baseNumEnemiesPerRoom: 2
   enemiesIncreasePerLevel: 1
   baseMainPathLength: 2
@@ -1736,7 +1737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -206}
+  m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 748.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316580669
@@ -2483,7 +2484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -208}
   m_SizeDelta: {x: 748.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012817585

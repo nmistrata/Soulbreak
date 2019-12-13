@@ -904,7 +904,7 @@ MonoBehaviour:
   speed: 6.3
   baseHealth: 15
   healthPerLevel: 0
-  stoppingDistance: 0.8
+  stoppingDistance: 1.2
   startingDistance: 2
   spawn: {fileID: 8300000, guid: efd89bd7a120d2c4eb480bcfb3d4ee9f, type: 3}
   attackSound: {fileID: 0}
