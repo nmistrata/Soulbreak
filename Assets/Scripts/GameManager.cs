@@ -86,9 +86,8 @@ public static class GameManager
     public static void EndGame()
     {
         gameOver = true;
-        PauseAction();
-        HidePauseScreen();
         AppearGameOverScreen();
+        SlowAction();
 
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour {
 
-    public bool dissapeared;
-    public bool appeared;
-    private bool wasToggled;
+    public bool dissapeared = false;
+    public bool appeared = false;
+    private bool wasToggled = false;
     public Text floorsClimbedText;
 
     // Use this for initialization

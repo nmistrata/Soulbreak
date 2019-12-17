@@ -911,7 +911,7 @@ MonoBehaviour:
   getHit: {fileID: 8300000, guid: a6c52be425e759f46b89cae2e2d45dbb, type: 3}
   oneShotAudio: {fileID: 82697035618678302}
   walkingAudio: {fileID: 82359677107593260}
-  baseDamage: 15
+  baseDamage: 7
   damagePerLevel: 0
 --- !u!137 &137670780282073912
 SkinnedMeshRenderer:

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
 
-    public bool dissapeared;
-    public bool appeared;
+    public bool dissapeared = false;
+    public bool appeared = false;
 
-    private bool wasToggled;
+    private bool wasToggled = false;
 
     private void FixedUpdate()
     {
@@ -34,9 +34,9 @@ public class PauseMenu : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("triggered");
         if (appeared)
         {
-            Debug.Log("Hiding obstructions");
             foreach (MeshRenderer m in other.gameObject.GetComponentsInChildren<MeshRenderer>())
             {
                 m.enabled = false;
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour {
         }
         else if (dissapeared)
         {
-            Debug.Log("Reappearing obstructions");
+            Debug.Log("disappeared");
             foreach (MeshRenderer m in other.gameObject.GetComponentsInChildren<MeshRenderer>())
             {
                 m.enabled = true;

@@ -902,8 +902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  baseHealth: 100
-  healthPerLevel: 30
+  baseHealth: 50
+  healthPerLevel: 15
   stoppingDistance: 20
   startingDistance: 23
   spawn: {fileID: 8300000, guid: efd89bd7a120d2c4eb480bcfb3d4ee9f, type: 3}

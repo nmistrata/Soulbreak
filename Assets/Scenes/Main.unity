@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b001faa93e10bd4bb1c940d333e5a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 130
   health: 0
   wands: []
   swapWandsAudio: {fileID: 8300000, guid: 816128480494aac44ae539459232849e, type: 3}
